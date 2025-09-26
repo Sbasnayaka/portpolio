@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PS Portfolio | Lectures</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Global styles (do not edit now) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="lecture.css">
+</head>
+<body>
+  <header class="nav_header">
+    <nav class="nav_bar" aria-label="Primary">
+      <a class="brand_logo" href="index.html">PS <span>Portfolio</span></a>
+      <button id="nav_toggle" class="nav_toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul id="nav_list" class="nav_list">
+        <li><a href="index.html" class="nav_link">Home</a></li>
+        <li><a href="lectures.html" class="nav_link active">Lectures</a></li>
+        <li><a href="contact.html" class="nav_link">Contact</a></li>
+        <li><a href="thankyou.html" class="nav_cta">❤ Thank&nbsp;You</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <h1 class="section_title">All Lectures</h1>
+
+      <!-- Cards grid: script will populate this -->
+      <div id="lec_list_all" class="cards_grid" role="list" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer_row">
+      <small>© 2025 Sanduni Basnayaka</small>
+      <a class="footer_link" href="thankyou.html">Say Thanks →</a>
+    </div>
+  </footer>
+
+  <script>
+    const lec_data = [
+      { week: 1, date: '03/06/2025', title: 'Introduction to Professional Skills (Johari Window)', status: 'missed' },
+      { week: 3, date: '17/06/2025', title: 'CV Writing', status: 'attended' },
+      { week: 4, date: '24/06/2025', title: 'Portfolio Management', status: 'attended' },
+      { week: 5, date: '01/07/2025', title: 'Food Festival Discussion / Surviving Skills', status: 'attended' },
+      { week: 6, date: '08/07/2025', title: 'ARCSCU (Keynote Speeches Assignment)', status: 'missed' },
+      { week: 8, date: '22/07/2025', title: 'Research Writing', status: 'attended' },
+      { week: 9, date: '29/07/2025', title: 'Food Festival', status: 'attended' },
+      { week: 10, date: '05/08/2025', title: 'Interview Skills', status: 'attended' },
+      { week: 11, date: '12/08/2025', title: 'Email Writing', status: 'attended' },
+      { week: 12, date: '19/08/2025', title: 'Emotional Intelligence', status: 'attended' },
+      { week: 13, date: '26/08/2025', title: 'Professional, Telephone and Dining Etiquette', status: 'attended' },
+      { week: 14, date: '02/09/2025', title: 'Negotiation Skills', status: 'attended' }
+    ];
+
+    const lec_list_all = document.getElementById('lec_list_all');
+
+    const createCard = (l) => {
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.setAttribute('role','listitem');
+      el.innerHTML = `
+        <div class="card_body">
+          <h3 class="card_title">Week ${l.week}: ${escapeHtml(l.title)}</h3>
+          <div class="card_meta">
+            <span class="date_text">${l.date}</span>
+            <span class="status_pill ${l.status === 'attended' ? 'attended' : (l.status === 'missed' ? 'missed' : '')}">${(l.status||'').toUpperCase() || ''}</span>
+          </div>
+        </div>
+      `;
+
+      const actions = document.createElement('div'); actions.className = 'card_actions';
+      const a = document.createElement('a');
+      a.className = 'btn_card';
+      a.href = `lecture${l.week}.html`;
+      a.textContent = 'Open Page';
+      a.setAttribute('aria-label', `Open lecture ${l.week} page`);
+      actions.appendChild(a);
+      el.appendChild(actions);
+      return el;
+    };
+
+    // basic HTML-escape helper
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
+    }
+
+    // populate
+    lec_data.forEach(l => lec_list_all.appendChild(createCard(l)));
+
+    // Optional: keyboard support for horizontal swipe on mobile
+    (function(){
+      const grid = document.getElementById('lec_list_all');
+      if(!grid) return;
+      grid.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight') grid.scrollBy({ left: 240, behavior: 'smooth' });
+        if(e.key === 'ArrowLeft') grid.scrollBy({ left: -240, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

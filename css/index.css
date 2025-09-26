@@ -1,0 +1,146 @@
+/* index.css — page-specific overrides for index.html
+   Keeps the same theme variables from styles.css and only overrides/index-specific layout.
+   Load this AFTER styles.css in index.html.
+*/
+
+:root{
+  /* fallback if variables not present yet */
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --muted: #a99ad6;
+  --shadow: 0 10px 30px rgba(139,92,246,.25);
+}
+
+/* --- Slider wrapper --- */
+.slider_wrap{
+  position:relative;
+  margin-top:18px;
+}
+
+/* Horizontal scroll / slider track */
+.cards_grid{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:12px 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  align-items:stretch;
+  /* soften the edges so cards float */
+  padding-bottom:18px;
+}
+
+/* Hide native scrollbar visually but keep it usable */
+.cards_grid::-webkit-scrollbar{height:10px}
+.cards_grid::-webkit-scrollbar-track{background:transparent}
+.cards_grid::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:10px}
+.cards_grid{scrollbar-width:thin; scrollbar-color: rgba(255,255,255,.06) transparent}
+
+/* Each card becomes a compact slide */
+.cards_grid .card{
+  flex: 0 0 300px;         /* slider item width */
+  min-width: 240px;
+  max-width: 320px;
+  scroll-snap-align: center;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow);
+}
+
+/* Hide large media on index row (we keep lecture cards compact) */
+.cards_grid .card_media,
+.cards_grid .card > img,
+.card iframe, .card embed, .card object { display:none !important; }
+
+/* Text & meta */
+.card_body{ padding:8px 0; }
+.card_title{
+  font-size:16px;
+  margin:0 0 8px;
+  font-weight:700;
+  line-height:1.25;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap; /* single-line title for compactness */
+}
+.card_meta{
+  font-size:13px;
+  color:var(--muted);
+  display:block;
+  margin-bottom:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+/* show only date, hide the status label for compact listing */
+.card_meta span:last-child{ display:none; }
+
+/* Actions: keep a prominent CTA */
+.card_actions{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  margin-top:8px;
+}
+.btn_card{
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:800;
+  text-decoration:none;
+  color:#0b0616;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow:var(--shadow);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Slider prev/next buttons */
+.slider_btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  border:0;
+  background: rgba(11,6,22,.7);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  font-weight:800;
+}
+.slider_btn:focus{ outline:3px solid rgba(139,92,246,.18); }
+.slider_btn.prev{ left:6px; }
+.slider_btn.next{ right:6px; }
+
+/* Small visual helper when no items */
+.cards_grid:empty{
+  min-height:120px;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  .cards_grid .card{ flex: 0 0 260px; }
+}
+@media (max-width: 640px){
+  .slider_btn{ width:36px;height:36px; }
+  .cards_grid{ gap:12px; padding-left:6px; padding-right:6px; }
+  .cards_grid .card{ flex:0 0 78%; min-width:70%; } /* make slide-wide on small screens */
+  .card_title{ font-size:15px; white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card_meta span:last-child{ display:none; } /* keep hiding status on mobile */
+}
+
+/* small focus / hover polish */
+.card:focus-within, .card:hover{ transform: translateY(-4px); transition: transform .18s ease; }

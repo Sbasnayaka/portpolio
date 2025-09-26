@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Portfolio | Thank You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="nav_header">
+        <nav class="nav_bar" aria-label="Primary">
+            <a class="brand_logo" href="index.html">PS  <span>Portfolio</span></a>
+            <button id="nav_toggle" class="nav_toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul id="nav_list" class="nav_list">
+                <li><a href="index.html" class="nav_link">Home</a></li>
+                <li><a href="lectures.html" class="nav_link">Lectures</a></li>
+                <li><a href="contact.html" class="nav_link">Contact</a></li>
+                <li><a href="thankyou.html" class="nav_cta">❤ Thank&nbsp;You</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="section">
+        <div class="container" style="text-align:center">
+            <h1 class="headline" style="margin-bottom:6px">Thank You</h1>
+            <p class="subhead">To our module head — thank you for the guidance, patience, and inspiration.</p>
+            <div class="card" style="display:inline-block;max-width:720px;padding:24px;margin-top:18px">
+                <p style="color:var(--muted);line-height:1.7">I appreciate the opportunities to learn from visiting lecturers and the supportive environment created throughout the Professional Skills module. The lessons will keep shaping my communication, teamwork, and professional growth.</p>
+                <p style="margin-top:10px;font-weight:700">With gratitude,<br> <span id="thanks_name">Sanduni</span></p>
+                <div class="card_actions" style="justify-content:center"><a class="btn_card" href="index.html">Back to Home</a></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><div class="container footer_row"><small>© 2025 Sanduni Basnayaka </small><a class="footer_link" href="lectures.html">Browse Lectures →</a></div></footer>
+    <script>document.getElementById('nav_toggle')?.addEventListener('click',()=>document.getElementById('nav_list').classList.toggle('open'));</script>
+</body>
+</html>
+

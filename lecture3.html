@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 3 — CV Writing (Missed)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- global styles (do not edit now) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- page-specific -->
+  <link rel="stylesheet" href="css/lecture3.css">
+</head>
+<body>
+  <header class="nav_header">
+    <nav class="nav_bar" aria-label="Primary">
+      <a class="brand_logo" href="index.html">PS <span>Portfolio</span></a>
+      <button id="nav_toggle" class="nav_toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul id="nav_list" class="nav_list">
+        <li><a href="index.html" class="nav_link">Home</a></li>
+        <li><a href="lectures.html" class="nav_link active">Lectures</a></li>
+        <li><a href="contact.html" class="nav_link">Contact</a></li>
+        <li><a href="thankyou.html" class="nav_cta">❤ Thank&nbsp;You</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section_title">CV Writing </h1>
+
+      <article class="card" aria-labelledby="wk3-title">
+
+        <!-- PROOF IMAGE: framed + caption + lightbox -->
+        <div class="proof_wrap">
+          <div class="proof_frame" role="group" aria-label="Proof photo">
+            <img id="proofImage" src="assets/cv_structure.jpg" alt="Photo of my handwritten notes for week 3" class="proof_img" />
+            <div class="proof_caption">
+              <div>Proof: my lecture notes (photo)</div>
+              <div style="display:flex; gap:8px;">
+                <a class="pdf_btn" href="assets/cv_structure.jpg" target="_blank" rel="noopener">Open Image</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Why I Missed</h3>
+        <p>I actually attended this lecture, but during the last part of the session I went out with my friend to fill our water bottles. At that time some students had already left and the door was closed, so I couldn't return and it was marked as missed on the sign sheet.</p>
+
+        <h3>What the Lecture Covered</h3>
+        <p>This lecture was about how to write a professional CV that represents our skills, education, and experience. We learned how to format a CV, what to include, and how to tailor it for specific roles.</p>
+
+        <h3>Key Learnings</h3>
+        <ul>
+          <li>Importance of clear structure and correct grammar.</li>
+          <li>Highlighting relevant skills and tailoring to the role.</li>
+          <li>Using keywords helps pass applicant tracking systems.</li>
+        </ul>
+
+        <!-- PDF viewer with toolbar -->
+        <div class="pdf_wrap" aria-label="CV document">
+          <div class="pdf_toolbar">
+          </div>
+          <!-- iframe shows PDF inside a styled container; fallback link below -->
+          <iframe id="pdfFrame" src="assets/Sanduni Basnayaka CV.pdf" class="pdf_viewer" title="Sanduni Basnayaka CV"></iframe>
+          <noscript style="display:block;padding:12px;color:var(--muted);background:rgba(255,255,255,.01)">
+          </noscript>
+        </div>
+
+        <div class="card_actions">
+          <a class="btn_card" href="lectures.html">Back to Lectures</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer_row">
+      <small>© 2025 Sanduni Basnayaka</small>
+      <a class="footer_link" href="index.html">Home →</a>
+    </div>
+  </footer>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox_overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox_close" aria-label="Close image viewer">✕</button>
+    <div class="lightbox_content" role="document">
+      <img src="" alt="Enlarged note photo" />
+    </div>
+  </div>
+
+  <!-- Page JS (only for this page) -->
+  <script>
+    // mobile nav toggle (same as your other pages)
+    document.getElementById('nav_toggle')?.addEventListener('click', () => {
+      document.getElementById('nav_list')?.classList.toggle('open');
+    });
+
+    // LIGHTBOX logic
+    (function(){
+      const img = document.getElementById('proofImage');
+      const openBtn = document.getElementById('openImageBtn');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('img');
+      const closeBtn = lightbox.querySelector('.lightbox_close');
+
+      function openLightbox(){
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || 'Enlarged image';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        // trap focus on close
+        closeBtn.focus();
+      }
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+      }
+
+      img?.addEventListener('click', openLightbox);
+      openBtn?.addEventListener('click', openLightbox);
+      closeBtn?.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    })();
+
+    // PDF helpers: ensure links open correct (handles spaces)
+    (function(){
+      const rawPath = 'assets/Sanduni Basnayaka CV.pdf';
+      const encoded = encodeURI(rawPath);
+      const pdfOpen = document.getElementById('pdfOpen');
+      const pdfDownload = document.getElementById('pdfDownload');
+      const pdfFrame = document.getElementById('pdfFrame');
+      if(pdfOpen) pdfOpen.href = encoded;
+      if(pdfDownload) pdfDownload.href = encoded;
+      if(pdfFrame) pdfFrame.src = encoded;
+    })();
+  </script>
+</body>
+</html>

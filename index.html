@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Portfolio | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/favicon.svg">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#6c2bd9">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav_header">
+        <nav class="nav_bar" aria-label="Primary">
+            <a class="brand_logo" href="index.html">PS  <span>Portfolio</span></a>
+            <button id="nav_toggle" class="nav_toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul id="nav_list" class="nav_list">
+                <li><a href="index.html" class="nav_link active">Home</a></li>
+                <li><a href="lectures.html" class="nav_link">Lectures</a></li>
+                <li><a href="contact.html" class="nav_link">Contact</a></li>
+                <li><a href="thankyou.html" class="nav_cta" title="Thank You">❤ Thank&nbsp;You</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- Hero / Profile -->
+        <section id="sec_profile" class="section hero_glow">
+            <div class="container hero_grid">
+                <div class="hero_left">
+                    <h1 class="headline">Hi, I'm <span id="stu_name">Sanduni Basnayaka</span></h1>
+                    <p class="subhead">SA Number: <strong id="stu_sa">SA23800946</strong></p>
+                    <p class="tagline">Professional Skills Portfolio to showcase my learning journey.</p>
+                    <div class="hero_actions">
+                        <a class="btn_primary" href="#sec_overview">View Overview</a>
+                        <a class="btn_ghost" href="lectures.html">Go to Lectures</a>
+                    </div>
+                </div>
+                <div class="hero_right">
+                    <div class="avatar_wrap">
+                        <img id="stu_pic" src="assets/me.jpg" alt="Student portrait">
+                        <div class="ring ring1"></div>
+                        <div class="ring ring2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview / Counts + Filters -->
+        <section id="sec_overview" class="section">
+            <div class="container">
+                <h2 class="section_title">Lecture Overview</h2>
+                <div class="stats_grid">
+                    <div class="stat_card">
+                        <span class="stat_label">Attended</span>
+                        <span id="lec_attended" class="stat_value">0</span>
+                    </div>
+                    <div class="stat_card">
+                        <span class="stat_label">Missed</span>
+                        <span id="lec_missed" class="stat_value">0</span>
+                    </div>
+                    <div class="stat_card">
+                        <span class="stat_label">Total Weeks</span>
+                        <span id="lec_total" class="stat_value">14</span>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button id="btn_tab_attended" class="tab_button active">Attended Lectures</button>
+                    <button id="btn_tab_missed" class="tab_button">Missed / No Lectures</button>
+                </div>
+
+                <div id="lec_1_section" class="cards_grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer_row">
+            <small>© 2025 <span id="footer_name">Sanduni Basnayaka</span>. Built for the PS module.</small>
+            <a class="footer_link" href="thankyou.html" aria-label="Go to Thank You page">Say Thanks →</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

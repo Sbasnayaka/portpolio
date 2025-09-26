@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Portfolio | Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="nav_header">
+        <nav class="nav_bar" aria-label="Primary">
+            <a class="brand_logo" href="index.html">PS  <span>Portfolio</span></a>
+            <button id="nav_toggle" class="nav_toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul id="nav_list" class="nav_list">
+                <li><a href="index.html" class="nav_link">Home</a></li>
+                <li><a href="lectures.html" class="nav_link">Lectures</a></li>
+                <li><a href="contact.html" class="nav_link active">Contact</a></li>
+                <li><a href="thankyou.html" class="nav_cta">❤ Thank&nbsp;You</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="section">
+        <div class="container">
+            <h1 class="section_title">Contact</h1>
+            <div class="card" style="padding:18px;display:grid;gap:16px;grid-template-columns:180px 1fr;align-items:center">
+                <div class="media_main">
+                    <img src="assets/me.jpg" alt="Profile" style="border-radius:9999px;width:180px;height:180px;object-fit:cover">
+                </div>
+                <div>
+                    <div style="display:grid;gap:10px">
+                        <a class="btn_card" style="display:inline-block;width:max-content" href="mailto:your.email@example.com">sandunibasnayaka01@gmail.com</a>
+                        <a class="btn_card" style="display:inline-block;width:max-content" href="tel:+94XXXXXXXXX">+94 74 066 5317</a>
+                        <a class="btn_card" style="display:inline-block;width:max-content" href="https://www.linkedin.com/">LinkedIn</a>
+                        <a class="btn_card" style="display:inline-block;width:max-content" href="https://github.com/">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+  <footer class="footer"><div class="container footer_row"><small>© 2025 Sanduni Basnayaka </small><a class="footer_link" href="index.html">Home →</a></div></footer>
+    <script>document.getElementById('nav_toggle')?.addEventListener('click',()=>document.getElementById('nav_list').classList.toggle('open'));</script>
+</body>
+</html>
+

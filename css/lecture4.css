@@ -1,0 +1,13 @@
+.lec4_img {
+  width:100%;
+  height:auto;
+  max-height: 980px;
+  object-fit:contain;
+  border-radius:8px;
+  align-items:center;
+  display:block;
+  cursor: zoom-in;
+  border: 1px solid rgba(255,255,255,.04);
+  background: #0f0818; /* dark backdrop for paper photos */
+  padding:6px;
+}

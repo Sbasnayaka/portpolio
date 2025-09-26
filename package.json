@@ -1,0 +1,10 @@
+{
+  "name": "ps-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "powershell -NoProfile -Command Start-Process index.html",
+    "dev": "powershell -NoProfile -Command Start-Process index.html",
+    "serve": "npx --yes http-server . -o index.html -c-1"
+  }
+}
